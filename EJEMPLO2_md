@@ -1,0 +1,8 @@
+#
+Crear un Servidor Rest que devuelva el impuesto segun la cabecera de la peticion determinadd por el header "ALLIANZ_SUBSIDIARY".
+Este servidor, ademas tendra un modo local, el cual mediante un parametro de un controlador podremos seleccionar la implementación y una implementacion TEST.
+Es de un riesgo que no se puede asumir que el modo test este publicado.
+El aplicativo debe ser creado mediante https://start.spring.io/
+
+
+Tips: usar profiles para entornos y qualifiers para implementaciones. 
