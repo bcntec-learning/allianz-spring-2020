@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpSession;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,7 +26,7 @@ public class BeanRest {
     }
 
     @GetMapping(value = "/calc", params = "value")
-    public BigDecimal sum(@RequestParam BigDecimal value, @RequestHeader("Accept-Language") String lang,  HttpSession session) {
+    public BigDecimal sum(@RequestParam BigDecimal value, @RequestHeader("Accept-Language") String lang, HttpSession session) {
         BigDecimal total = Optional.ofNullable((BigDecimal) session.getAttribute("TOTAL")).orElse(BigDecimal.ZERO);
         List<BigDecimal> numbers = (List<BigDecimal>) Optional.ofNullable(session.getAttribute("DATA"))
                 .orElse(new ArrayList<>());
