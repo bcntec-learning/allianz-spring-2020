@@ -1,20 +1,29 @@
 package allianz2020.ejemplojpa.data;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
-@Table(name="USERS")
+@Table(name = "USERS")
 @Entity
 public class Usuario {
     @Id
     private Long id;
-    @Column(name="NAME", unique = true)
+    @Column(name = "NAME", unique = true)
     private String nombre;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="REGISTER_TIME")
+    @Column(name = "REGISTER_TIME")
     private Date fechaRegistro;
+
+    @Transient
+    private String prueba;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    //@JoinTable(name = "users_roles")
+    //@JoinColumn
+    List<Rol> roles;
+
 
     public Long getId() {
         return id;
@@ -38,5 +47,21 @@ public class Usuario {
 
     public void setFechaRegistro(Date fechaRegistro) {
         this.fechaRegistro = fechaRegistro;
+    }
+
+    public String getPrueba() {
+        return prueba;
+    }
+
+    public void setPrueba(String prueba) {
+        this.prueba = prueba;
+    }
+
+    public List<Rol> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Rol> roles) {
+        this.roles = roles;
     }
 }
